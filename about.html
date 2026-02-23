@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Tammy — Dancing Village Partners</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a18;
+    --cream: #f5f2ec;
+    --teal: #2a7d7b;
+    --teal-light: #3d9e9b;
+    --moss: #6b7c3f;
+    --gold: #c8a84b;
+    --warm-white: #faf8f4;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 24px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(250, 248, 244, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(42, 125, 123, 0.12);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--teal); }
+
+  .nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+
+  .nav-links a:hover, .nav-links a.active { opacity: 1; color: var(--teal); }
+
+  .nav-cta {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--teal) !important;
+    opacity: 1 !important;
+    border-bottom: 1px solid var(--teal);
+    padding-bottom: 2px;
+  }
+
+  /* PAGE HERO */
+  .page-hero {
+    padding: 160px 72px 100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: end;
+    background: var(--warm-white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page-hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(42,125,123,0.2), transparent);
+  }
+
+  .hero-content .eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hero-content .eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--teal);
+  }
+
+  .hero-content h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 5.5vw, 80px);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--ink);
+    margin-bottom: 32px;
+  }
+
+  .hero-content h1 em {
+    font-style: italic;
+    color: var(--teal);
+  }
+
+  .hero-content .lead {
+    font-size: 18px;
+    line-height: 1.75;
+    font-weight: 300;
+    color: #3a3a36;
+    max-width: 520px;
+  }
+
+  .hero-photo-side {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+
+  .photo-frame {
+    width: 100%;
+    max-width: 420px;
+    aspect-ratio: 3/4;
+    background: linear-gradient(160deg, #c8ddd8 0%, #7aada6 50%, #2a7d7b 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .photo-frame::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .photo-placeholder-label {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255,255,255,0.9);
+    padding: 10px 20px;
+    font-size: 12px;
+    color: var(--teal);
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+    font-weight: 500;
+  }
+
+  .photo-accent {
+    position: absolute;
+    top: -16px;
+    right: -16px;
+    width: 80px;
+    height: 80px;
+    border: 2px solid var(--teal);
+    opacity: 0.3;
+  }
+
+  /* PULL QUOTE */
+  .pull-quote {
+    background: var(--ink);
+    padding: 72px;
+    text-align: center;
+  }
+
+  .pull-quote blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(24px, 3vw, 38px);
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.4;
+    color: white;
+    max-width: 800px;
+    margin: 0 auto 24px;
+  }
+
+  .pull-quote blockquote em {
+    color: var(--gold);
+    font-style: normal;
+  }
+
+  .pull-quote cite {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    font-style: normal;
+  }
+
+  /* NARRATIVE */
+  .narrative {
+    padding: 100px 72px;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 80px;
+  }
+
+  .narrative-sidebar {
+    position: sticky;
+    top: 100px;
+    align-self: start;
+  }
+
+  .sidebar-nav {
+    list-style: none;
+    border-left: 1px solid rgba(42,125,123,0.2);
+    padding-left: 24px;
+  }
+
+  .sidebar-nav li {
+    margin-bottom: 20px;
+  }
+
+  .sidebar-nav a {
+    font-size: 13px;
+    font-weight: 400;
+    color: #7a7a74;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+    display: block;
+    line-height: 1.5;
+  }
+
+  .sidebar-nav a:hover { color: var(--teal); }
+  .sidebar-nav a.active { color: var(--teal); font-weight: 500; }
+
+  .narrative-body { max-width: 680px; }
+
+  .narrative-chapter {
+    margin-bottom: 80px;
+  }
+
+  .chapter-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .chapter-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(42,125,123,0.2);
+    max-width: 48px;
+  }
+
+  .narrative-chapter h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(30px, 3vw, 44px);
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 28px;
+  }
+
+  .narrative-chapter h2 em {
+    font-style: italic;
+    color: var(--teal);
+  }
+
+  .narrative-chapter p {
+    font-size: 16px;
+    line-height: 1.85;
+    color: #3a3a36;
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+
+  .narrative-chapter p strong {
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .inline-quote {
+    margin: 36px 0;
+    padding: 28px 36px;
+    border-left: 3px solid var(--gold);
+    background: var(--cream);
+  }
+
+  .inline-quote p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.5;
+    color: var(--ink);
+    margin: 0 !important;
+  }
+
+  /* CAREER TIMELINE */
+  .timeline {
+    background: var(--cream);
+    padding: 100px 72px;
+  }
+
+  .timeline-header {
+    margin-bottom: 56px;
+  }
+
+  .section-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 3vw, 48px);
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+
+  .timeline-items {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    max-width: 760px;
+  }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 40px;
+    padding: 40px 0;
+    border-bottom: 1px solid rgba(42,125,123,0.12);
+    position: relative;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 160px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: rgba(42,125,123,0.15);
+  }
+
+  .timeline-date {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--teal);
+    letter-spacing: 0.04em;
+    padding-top: 4px;
+  }
+
+  .timeline-content h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+
+  .timeline-content .org {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--teal);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .timeline-content p {
+    font-size: 14px;
+    line-height: 1.75;
+    color: #5a5a54;
+    font-weight: 300;
+  }
+
+  /* VALUES */
+  .values {
+    padding: 100px 72px;
+  }
+
+  .values-header {
+    margin-bottom: 64px;
+    max-width: 560px;
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 48px;
+  }
+
+  .value-item {
+    padding: 40px;
+    background: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .value-item::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--teal);
+  }
+
+  .value-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px;
+    font-weight: 300;
+    color: rgba(42,125,123,0.1);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .value-item h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+
+  .value-item p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #5a5a54;
+    font-weight: 300;
+  }
+
+  /* TESTIMONIALS */
+  .testimonials {
+    background: var(--ink);
+    padding: 100px 72px;
+    color: white;
+  }
+
+  .test-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .test-header .section-eyebrow { color: var(--gold); }
+  .test-header .section-title { color: white; }
+
+  .test-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .test-card {
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 40px;
+    position: relative;
+    transition: border-color 0.3s;
+  }
+
+  .test-card:hover { border-color: rgba(42,125,123,0.5); }
+
+  .test-card::before {
+    content: '"';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px;
+    color: var(--teal);
+    opacity: 0.5;
+    position: absolute;
+    top: 12px;
+    left: 28px;
+    line-height: 1;
+  }
+
+  .test-card blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.88);
+    margin-bottom: 24px;
+    margin-top: 28px;
+  }
+
+  .test-card cite {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    font-style: normal;
+  }
+
+  /* CTA */
+  .cta-band {
+    padding: 100px 72px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .cta-band h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+
+  .cta-band h2 em {
+    font-style: italic;
+    color: var(--teal);
+  }
+
+  .cta-band p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #4a4a44;
+    font-weight: 300;
+    margin-bottom: 40px;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--teal);
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 16px 36px;
+    text-decoration: none;
+    transition: background 0.25s, transform 0.2s;
+  }
+
+  .btn-primary:hover {
+    background: var(--teal-light);
+    transform: translateY(-1px);
+  }
+
+  .cta-aside {
+    background: var(--cream);
+    padding: 48px;
+  }
+
+  .cta-aside h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+
+  .cta-aside p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #5a5a54;
+    font-weight: 300;
+    margin-bottom: 16px;
+  }
+
+  .cta-aside a {
+    color: var(--teal);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--teal);
+    padding-bottom: 2px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 8px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.5);
+    padding: 40px 72px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: rgba(255,255,255,0.8);
+    font-weight: 400;
+  }
+
+  /* REVEAL */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Dancing <span>Village</span> Partners</a>
+  <ul class="nav-links">
+    <li><a href="howwework.html">How I Work</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="connect.html">Work Together</a></li>
+    <li><a href="connect.html" class="nav-cta">Let's Talk</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="hero-content">
+    <p class="eyebrow">About Tammy</p>
+    <h1>I've spent<br>25 years at<br>the <em>intersection</em><br>of mission<br>and money.</h1>
+    <p class="lead">That's where the most important work happens — and it's where I do my best work too.</p>
+  </div>
+  <div class="hero-photo-side">
+    <div class="photo-frame">
+      <div class="photo-accent"></div>
+      <span class="photo-placeholder-label">📷 Tammy's photo here</span>
+    </div>
+  </div>
+</section>
+
+<!-- PULL QUOTE -->
+<div class="pull-quote">
+  <blockquote>"I've always been drawn to work that makes you think — <em>'if we could just get the right partners behind this, imagine what's possible.'</em>"</blockquote>
+  <cite>— Tammy Abraham Bordeaux, Founder, Dancing Village Partners</cite>
+</div>
+
+<!-- NARRATIVE -->
+<section class="narrative">
+  <aside class="narrative-sidebar">
+    <ul class="sidebar-nav">
+      <li><a href="#chapter-1" class="active">The beginning</a></li>
+      <li><a href="#chapter-2">National Geographic</a></li>
+      <li><a href="#chapter-3">Tribeca Festival</a></li>
+      <li><a href="#chapter-4">Both sides of the table</a></li>
+      <li><a href="#chapter-5">Why Dancing Village</a></li>
+      <li><a href="#chapter-6">How I show up</a></li>
+    </ul>
+  </aside>
+
+  <div class="narrative-body">
+
+    <div class="narrative-chapter reveal" id="chapter-1">
+      <p class="chapter-label">The beginning</p>
+      <h2>I've always believed that <em>the right partnership</em> can change everything.</h2>
+      <p>Early in my career, I discovered something that's never stopped being true: the organizations doing the most important work in the world are rarely the ones with the easiest path to funding. They have the mission. They have the people. They have the idea. What they're missing is the right partner — the company or institution that would say yes if only they knew how to ask, and who to ask.</p>
+      <p>That gap became my life's work.</p>
+    </div>
+
+    <div class="narrative-chapter reveal" id="chapter-2">
+      <p class="chapter-label">National Geographic · 13 years</p>
+      <h2>Learning what it takes to <em>build something that lasts.</em></h2>
+      <p>I spent 13 years at National Geographic — one of the most mission-driven, globally recognized organizations in the world. I grew from Director to Vice President of Corporate Partnerships, working closely with brands, foundations, NGOs, media partners, and cultural institutions across dozens of major initiatives.</p>
+      <p>What I learned at Nat Geo wasn't just how to close a deal. It was how to build partnerships that both sides are still proud of years later. How to translate a mission into language that resonates in a boardroom. How to find the overlap between what a company needs and what an organization stands for — and build something meaningful in that space.</p>
+      <div class="inline-quote">
+        <p>"She always strives to create the most meaningful partnerships — usually far ahead of their time."</p>
+      </div>
+      <p>The partnerships I built there weren't transactional. They were strategic, long-term relationships between brands and mission — the kind that hold up under scrutiny and generate real impact on both sides.</p>
+    </div>
+
+    <div class="narrative-chapter reveal" id="chapter-3">
+      <p class="chapter-label">Tribeca Festival · SVP Partnerships</p>
+      <h2>Where culture, commerce, <em>and mission collide.</em></h2>
+      <p>After Nat Geo, I joined Tribeca Festival as Senior Vice President of Partnerships — one of the most high-profile, complex partnership environments in the cultural world. Tribeca sits at the intersection of film, media, technology, and social impact. It demands a particular kind of sophistication: the ability to hold a creative vision with one hand and a revenue strategy with the other, without letting either one drop.</p>
+      <p>That experience sharpened everything. It reinforced that the best partnerships aren't just financial arrangements — they're collaborations that create something neither party could have done alone.</p>
+    </div>
+
+    <div class="narrative-chapter reveal" id="chapter-4">
+      <p class="chapter-label">The other side of the table</p>
+      <h2>I didn't just advise nonprofits. <em>I built one.</em></h2>
+      <p>While building my corporate career, I co-founded Rivertowns Village Green, a 501(c)(3), and created The Tarrytown and Sleepy Hollow Farmers Market — <strong>recently voted the #1 farmers market in New York State.</strong></p>
+      <p>This wasn't a side project. It was a full nonprofit operation: building a board, navigating community politics, designing programming, finding corporate sponsors, writing grants, and rallying community support — all while serving real people with food assistance, education, and cultural events.</p>
+      <p>That experience is the thing that makes me different from most partnership consultants. I haven't just sat across the table from nonprofit leaders and told them what to do. I've been them. I know the pressure to fund the mission while staying true to it. I know what it feels like to need a yes and not know how to get one.</p>
+      <p>That perspective shapes everything about how I work.</p>
+    </div>
+
+    <div class="narrative-chapter reveal" id="chapter-5">
+      <p class="chapter-label">Why Dancing Village</p>
+      <h2>In 2023, I decided to <em>spend all my time</em> on the work I love most.</h2>
+      <p>After 25 years, I started Dancing Village Partners because I wanted to bring everything I'd built — the relationships, the instincts, the methodology, the joy of the work — directly to the organizations that need it most.</p>
+      <p>The name matters to me. A dancing village isn't a solo act. It's people moving together, in rhythm, toward something bigger than any one of them. That's what a great partnership feels like when it works. That's what I help build.</p>
+      <p>Today I work with nonprofit leaders, purpose-driven founders, and mission-led organizations around the world — helping them find, build, and close the partnerships that fund their next chapter.</p>
+    </div>
+
+    <div class="narrative-chapter reveal" id="chapter-6">
+      <p class="chapter-label">How I show up</p>
+      <h2>I'm a strategic partner, <em>not just a consultant.</em></h2>
+      <p>I'm also a certified professional coach (iPEC), which means I bring something to this work that goes beyond strategy decks and prospect lists. I help leaders think clearly under pressure. I ask the questions that cut through the noise. I hold the bigger picture when you're in the weeds.</p>
+      <p>I show up as a true collaborator — invested in your outcomes, honest about what I see, and committed to the work for as long as it takes.</p>
+      <p>I'm most effective when you need someone who can hold strategy and execution together — who can help you think and help you do.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CAREER TIMELINE -->
+<section class="timeline reveal">
+  <div class="timeline-header">
+    <p class="section-eyebrow">Career arc</p>
+    <h2 class="section-title">25 years in the making.</h2>
+  </div>
+  <div class="timeline-items">
+    <div class="timeline-item">
+      <div class="timeline-date">2023 — Present</div>
+      <div class="timeline-content">
+        <h3>Founder & President</h3>
+        <p class="org">Dancing Village Partners</p>
+        <p>Strategic partnership consulting for purpose-driven leaders, nonprofits, and mission-led organizations worldwide.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2020 — 2023</div>
+      <div class="timeline-content">
+        <h3>Senior Vice President, Partnerships</h3>
+        <p class="org">Tribeca Festival</p>
+        <p>Led partnership strategy and revenue development for one of the world's most celebrated cultural institutions.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2007 — 2020</div>
+      <div class="timeline-content">
+        <h3>Vice President, Corporate Partnerships</h3>
+        <p class="org">National Geographic · 13 years</p>
+        <p>Rose from Director to VP, building major partnerships with brands, foundations, NGOs, and cultural institutions across dozens of global initiatives.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2013 — Present</div>
+      <div class="timeline-content">
+        <h3>Co-Founder & Board Member</h3>
+        <p class="org">Rivertowns Village Green / The TaSH Farmers Market</p>
+        <p>Co-founded a 501(c)(3) and built The TaSH into the #1 farmers market in New York State, with food assistance programs, cultural events, and community partnerships.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2016</div>
+      <div class="timeline-content">
+        <h3>Professional Certified Coach</h3>
+        <p class="org">iPEC Coaching</p>
+        <p>Certified coach — bringing a coaching mindset to every client engagement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values">
+  <div class="values-header reveal">
+    <p class="section-eyebrow">How I think about partnerships</p>
+    <h2 class="section-title" style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,3vw,48px);font-weight:300;line-height:1.2;color:var(--ink);">A few things I believe deeply.</h2>
+  </div>
+  <div class="values-grid">
+    <div class="value-item reveal reveal-delay-1">
+      <div class="value-number">01</div>
+      <h3>Partnerships should work for everyone at the table.</h3>
+      <p>The best deals aren't the ones where one side wins. They're the ones where both sides walk away with something they couldn't have built alone — and want to do it again.</p>
+    </div>
+    <div class="value-item reveal reveal-delay-2">
+      <div class="value-number">02</div>
+      <h3>Mission is the strategy, not an afterthought.</h3>
+      <p>Organizations with a genuine purpose have something companies can't manufacture: credibility. That's your most powerful asset. The strategy should build from there, not work around it.</p>
+    </div>
+    <div class="value-item reveal reveal-delay-3">
+      <div class="value-number">03</div>
+      <h3>Relationships are the real infrastructure.</h3>
+      <p>Deals get signed because of relationships. My job — and my advantage — is knowing how to build them, maintain them, and activate them for you.</p>
+    </div>
+    <div class="value-item reveal">
+      <div class="value-number">04</div>
+      <h3>You shouldn't have to translate yourself to be understood.</h3>
+      <p>I speak both languages fluently — the language of mission and the language of business. So you don't have to choose between being authentic and being effective. You can be both.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials reveal">
+  <div class="test-header">
+    <p class="section-eyebrow">What people say</p>
+    <h2 class="section-title">In their words.</h2>
+  </div>
+  <div class="test-grid">
+    <div class="test-card">
+      <blockquote>"Tammy is creative, intuitive, and has an affinity for building meaningful relationships and partnerships. She identifies synergies and a shared sense of purpose, and executes with utmost professionalism, tenacity, and a solutions-oriented mindset."</blockquote>
+      <cite>Sophie Ross — Communications Consultant & Executive Coach</cite>
+    </div>
+    <div class="test-card">
+      <blockquote>"She has a special knack for seeing the bigger picture and broader purpose. She finds solutions when others see problems... and always strives to create the most meaningful partnerships — usually far ahead of their time. Working with her remains a career highlight for me."</blockquote>
+      <cite>Melissa S. — Strategic Partnerships Leader</cite>
+    </div>
+    <div class="test-card">
+      <blockquote>"We created so many incredible, innovative partnerships together and she was always open to new ideas and new ways to work together. It was one of the best experiences I've had and I'm forever grateful for our relationship and our work together."</blockquote>
+      <cite>Lisa Baxt — Former Brand Marketing Director, Nikon</cite>
+    </div>
+    <div class="test-card" style="display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.03);border-style:dashed;">
+      <div style="text-align:center;padding:20px;">
+        <p style="font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:rgba(255,255,255,0.4);margin-bottom:12px;">More case studies & testimonials coming soon.</p>
+        <p style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.25);">— Tammy's clients</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band" id="connect">
+  <div class="reveal">
+    <h2>If this resonates,<br><em>let's talk.</em></h2>
+    <p>The best way to know if we're the right fit is a conversation. No pressure, no pitch — just a chance to hear what you're working on and see if I can help.</p>
+    <a href="connect.html" class="btn-primary">Start a conversation →</a>
+  </div>
+  <div class="cta-aside reveal">
+    <h3>Prefer to learn more first?</h3>
+    <p>See how I typically work with clients — from early-stage strategy to full partnership development and deal stewardship.</p>
+    <a href="howwework.html">See how I work →</a>
+    <br><br>
+    <p>Or connect with me on LinkedIn — I'm active there and always happy to connect with people doing meaningful work.</p>
+    <a href="https://linkedin.com/in/tammyabordeaux" target="_blank">Find me on LinkedIn →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">Dancing Village Partners</span>
+  <span>© 2025 Tammy Abraham Bordeaux · New York</span>
+  <a href="https://linkedin.com/in/tammyabordeaux" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;">LinkedIn ↗</a>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // Sidebar nav active state on scroll
+  const chapters = document.querySelectorAll('.narrative-chapter');
+  const navLinks = document.querySelectorAll('.sidebar-nav a');
+  const chapterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(link => link.classList.remove('active'));
+        const id = entry.target.id;
+        const activeLink = document.querySelector(`.sidebar-nav a[href="#${id}"]`);
+        if (activeLink) activeLink.classList.add('active');
+      }
+    });
+  }, { threshold: 0.5 });
+  chapters.forEach(ch => chapterObserver.observe(ch));
+</script>
+
+</body>
+</html>
