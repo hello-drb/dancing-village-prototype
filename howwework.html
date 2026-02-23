@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How I Work — Dancing Village Partners</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a18;
+    --cream: #f5f2ec;
+    --teal: #2a7d7b;
+    --teal-light: #3d9e9b;
+    --gold: #c8a84b;
+    --warm-white: #faf8f4;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 24px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(250, 248, 244, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(42, 125, 123, 0.12);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--teal); }
+
+  .nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity 0.2s, color 0.2s;
+  }
+
+  .nav-links a:hover { opacity: 1; color: var(--teal); }
+  .nav-links a.active { opacity: 1; color: var(--teal); }
+
+  .nav-cta {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--teal) !important;
+    opacity: 1 !important;
+    border-bottom: 1px solid var(--teal);
+    padding-bottom: 2px;
+  }
+
+  /* PAGE HERO */
+  .page-hero {
+    padding: 160px 72px 100px;
+    background: var(--ink);
+    color: white;
+    position: relative;
+    overflow: hidden;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .page-hero::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 700px; height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(42,125,123,0.25) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .page-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: 100px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,168,75,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--teal-light);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px; height: 1px;
+    background: var(--teal-light);
+  }
+
+  .page-hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 6vw, 88px);
+    font-weight: 300;
+    line-height: 1.0;
+    color: white;
+    max-width: 800px;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 32px;
+  }
+
+  .page-hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .page-hero .lead {
+    font-size: 17px;
+    line-height: 1.75;
+    font-weight: 300;
+    color: rgba(255,255,255,0.72);
+    max-width: 600px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* HONEST INTRO */
+  .honest-intro {
+    padding: 90px 72px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    border-bottom: 1px solid rgba(42,125,123,0.1);
+  }
+
+  .honest-intro h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 3.5vw, 50px);
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+
+  .honest-intro h2 em {
+    font-style: italic;
+    color: var(--teal);
+  }
+
+  .honest-intro-right p {
+    font-size: 16px;
+    line-height: 1.85;
+    color: #3a3a36;
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+
+  .honest-intro-right p strong {
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  /* RIGHT FIT */
+  .right-fit {
+    background: var(--cream);
+    padding: 90px 72px;
+  }
+
+  .right-fit-header {
+    margin-bottom: 56px;
+  }
+
+  .section-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 3.5vw, 50px);
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+
+  .section-title em { font-style: italic; color: var(--teal); }
+
+  .fit-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+  }
+
+  .fit-card {
+    background: white;
+    padding: 44px;
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    transition: transform 0.25s;
+  }
+
+  .fit-card:hover { transform: translateY(-3px); }
+
+  .fit-icon {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: rgba(42,125,123,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+
+  .fit-content h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .fit-content p {
+    font-size: 14px;
+    line-height: 1.75;
+    color: #5a5a54;
+    font-weight: 300;
+  }
+
+  /* SERVICES */
+  .services {
+    padding: 100px 72px;
+  }
+
+  .services-header {
+    margin-bottom: 72px;
+    max-width: 640px;
+  }
+
+  .services-header p.body {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #4a4a44;
+    font-weight: 300;
+    margin-top: 20px;
+  }
+
+  .service-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin-bottom: 2px;
+    position: relative;
+  }
+
+  .service-block:last-child { margin-bottom: 0; }
+
+  .service-left {
+    background: var(--ink);
+    padding: 60px 56px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .service-tag {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--teal-light);
+    margin-bottom: 20px;
+  }
+
+  .service-left h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 3vw, 40px);
+    font-weight: 300;
+    line-height: 1.2;
+    color: white;
+    margin-bottom: 16px;
+  }
+
+  .service-left h3 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .service-left .tagline {
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.65);
+    font-weight: 300;
+  }
+
+  .service-right {
+    background: var(--cream);
+    padding: 60px 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .service-right p {
+    font-size: 15px;
+    line-height: 1.85;
+    color: #3a3a36;
+    font-weight: 300;
+    margin-bottom: 24px;
+  }
+
+  .service-right p:last-of-type { margin-bottom: 0; }
+
+  .service-includes {
+    margin-top: 28px;
+    border-top: 1px solid rgba(42,125,123,0.15);
+    padding-top: 24px;
+  }
+
+  .service-includes p {
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal) !important;
+    margin-bottom: 12px !important;
+  }
+
+  .includes-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .includes-list li {
+    font-size: 13px;
+    color: #5a5a54;
+    font-weight: 300;
+    background: white;
+    padding: 6px 14px;
+    border: 1px solid rgba(42,125,123,0.15);
+  }
+
+  /* FLIP layout for alternating blocks */
+  .service-block.flip .service-left { order: 2; }
+  .service-block.flip .service-right { order: 1; background: white; }
+
+  /* ENGAGEMENT MODELS */
+  .engagement {
+    background: var(--ink);
+    padding: 100px 72px;
+    color: white;
+  }
+
+  .engagement-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .engagement-header .section-eyebrow { color: var(--gold); }
+  .engagement-header .section-title { color: white; }
+  .engagement-header .section-title em { color: var(--gold); font-style: italic; }
+
+  .engagement-header p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.6);
+    font-weight: 300;
+    margin-top: 16px;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.75;
+  }
+
+  .engagement-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .engagement-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 48px 40px;
+    transition: background 0.3s, border-color 0.3s;
+  }
+
+  .engagement-card:hover {
+    background: rgba(42,125,123,0.1);
+    border-color: rgba(42,125,123,0.3);
+  }
+
+  .engagement-type {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .engagement-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 400;
+    color: white;
+    margin-bottom: 16px;
+    line-height: 1.3;
+  }
+
+  .engagement-card p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.6);
+    font-weight: 300;
+  }
+
+  /* PROCESS */
+  .process {
+    padding: 100px 72px;
+    background: var(--warm-white);
+  }
+
+  .process-header {
+    margin-bottom: 72px;
+    max-width: 560px;
+  }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+  }
+
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: 28px;
+    right: 28px;
+    height: 1px;
+    background: rgba(42,125,123,0.2);
+    z-index: 0;
+  }
+
+  .process-step {
+    padding: 0 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-number {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: white;
+    border: 2px solid var(--teal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--teal);
+    margin-bottom: 24px;
+  }
+
+  .process-step h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+
+  .process-step p {
+    font-size: 13px;
+    line-height: 1.75;
+    color: #5a5a54;
+    font-weight: 300;
+  }
+
+  /* TAMMY NOTE */
+  .tammy-note {
+    margin: 0 72px;
+    padding: 56px;
+    background: var(--cream);
+    border-left: 3px solid var(--teal);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .note-photo {
+    width: 96px; height: 96px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #c8ddd8, #2a7d7b);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    flex-shrink: 0;
+    font-weight: 300;
+    padding: 8px;
+  }
+
+  .note-text p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.55;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+
+  .note-text cite {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--teal);
+    font-style: normal;
+  }
+
+  /* CTA */
+  .cta {
+    padding: 100px 72px;
+    text-align: center;
+    background: var(--warm-white);
+  }
+
+  .cta h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(38px, 4.5vw, 64px);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--ink);
+    max-width: 700px;
+    margin: 0 auto 24px;
+  }
+
+  .cta h2 em { font-style: italic; color: var(--teal); }
+
+  .cta p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #4a4a44;
+    font-weight: 300;
+    max-width: 520px;
+    margin: 0 auto 40px;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--teal);
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 18px 44px;
+    text-decoration: none;
+    transition: background 0.25s, transform 0.2s;
+  }
+
+  .btn-primary:hover {
+    background: var(--teal-light);
+    transform: translateY(-2px);
+  }
+
+  .cta-sub {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #9a9a94;
+  }
+
+  .cta-sub a {
+    color: var(--teal);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(42,125,123,0.3);
+    padding-bottom: 1px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.5);
+    padding: 40px 72px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: rgba(255,255,255,0.8);
+    font-weight: 400;
+  }
+
+  /* REVEAL */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Dancing <span>Village</span> Partners</a>
+  <ul class="nav-links">
+    <li><a href="howwework.html" class="active">How I Work</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="connect.html">Work Together</a></li>
+    <li><a href="connect.html" class="nav-cta">Let's Talk</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="page-hero">
+  <p class="hero-eyebrow">How I Work</p>
+  <h1>I don't just give<br>you a strategy.<br>I help you <em>execute it.</em></h1>
+  <p class="lead">Most consultants hand you a plan and leave. I stay at the table — from the first conversation about positioning all the way through to a signed partnership. Here's what that looks like.</p>
+</section>
+
+<!-- HONEST INTRO -->
+<section class="honest-intro">
+  <div class="reveal">
+    <h2>Every engagement<br>is different.<br><em>That's by design.</em></h2>
+  </div>
+  <div class="honest-intro-right reveal">
+    <p>I don't offer packages. I don't have a fixed methodology that I apply to every client regardless of where they are. What I offer is 25 years of pattern recognition, a deep network, and the judgment to know what your specific situation actually needs.</p>
+    <p>Sometimes that's <strong>strategy from scratch</strong> — helping you figure out what you're selling and to whom. Sometimes it's <strong>full partnership development</strong> — finding prospects, building relationships, and closing deals. Sometimes it's <strong>a thought partner</strong> who shows up every few weeks and helps you think clearly.</p>
+    <p>We always start with a conversation to figure out which of these fits your moment.</p>
+  </div>
+</section>
+
+<!-- RIGHT FIT -->
+<section class="right-fit">
+  <div class="right-fit-header reveal">
+    <p class="section-eyebrow">Is this the right fit?</p>
+    <h2 class="section-title">I do my best work when...</h2>
+  </div>
+  <div class="fit-grid">
+    <div class="fit-card reveal reveal-delay-1">
+      <div class="fit-icon">🎯</div>
+      <div class="fit-content">
+        <h3>The mission is real and the stakes are high</h3>
+        <p>I work best with leaders who care deeply about what they're building and understand that the right partnerships aren't just revenue — they're validation, amplification, and momentum.</p>
+      </div>
+    </div>
+    <div class="fit-card reveal reveal-delay-2">
+      <div class="fit-icon">🤝</div>
+      <div class="fit-content">
+        <h3>You want a partner, not just a vendor</h3>
+        <p>I show up fully — invested in your outcomes, honest about what I see, and committed to the work. The relationships I build with clients tend to be long ones, because that's how trust works.</p>
+      </div>
+    </div>
+    <div class="fit-card reveal reveal-delay-3">
+      <div class="fit-icon">🌱</div>
+      <div class="fit-content">
+        <h3>You're ready to grow — even if you're not sure how</h3>
+        <p>You don't need to have everything figured out before reaching out. Some of the best work I've done has started with a leader saying "I know we need corporate partners, but I don't know where to begin."</p>
+      </div>
+    </div>
+    <div class="fit-card reveal reveal-delay-4">
+      <div class="fit-icon">⚡</div>
+      <div class="fit-content">
+        <h3>Revenue is tied to your next big move</h3>
+        <p>Whether you're launching a new initiative, scaling an existing program, or pivoting your model — if partnerships are essential to what comes next, that's exactly when I'm most useful.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services">
+  <div class="services-header reveal">
+    <p class="section-eyebrow">What I do</p>
+    <h2 class="section-title">Three ways I typically work with clients.</h2>
+    <p class="body">These aren't rigid packages — they're descriptions of the kind of work I do. Most engagements blend more than one. We'll figure out the right shape together.</p>
+  </div>
+
+  <!-- SERVICE 1 -->
+  <div class="service-block reveal">
+    <div class="service-left">
+      <p class="service-tag">01 · Partnership Strategy & Advisory</p>
+      <h3>Positioning You<br>for <em>Growth</em></h3>
+      <p class="tagline">For organizations that need to get their house in order before going to market — or that want to make sure they're approaching the right companies in the right way.</p>
+    </div>
+    <div class="service-right">
+      <p>Before you can find the right partners, you need to be able to articulate what you're offering and why a company should care. That sounds obvious — but most organizations, even sophisticated ones, struggle to do this in a way that resonates in a corporate boardroom.</p>
+      <p>I help you clarify your value proposition, identify which types of partners would invest and why, and design an approach that's grounded in how corporate decisions actually get made. Sometimes that's where we stop. Sometimes it's where we start.</p>
+      <div class="service-includes">
+        <p>This typically includes</p>
+        <ul class="includes-list">
+          <li>Partnership audit & assessment</li>
+          <li>Value proposition development</li>
+          <li>Partner prospect mapping</li>
+          <li>Pitch narrative & materials</li>
+          <li>Go-to-market strategy</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICE 2 -->
+  <div class="service-block flip reveal">
+    <div class="service-left">
+      <p class="service-tag">02 · Partner & Revenue Development</p>
+      <h3>Co-Creating<br><em>Opportunities</em></h3>
+      <p class="tagline">For organizations ready to go to market — who need someone to find the right partners, open doors, and shape deals that actually close.</p>
+    </div>
+    <div class="service-right">
+      <p>This is where I bring my network and my instincts to bear. I research and identify the right corporate prospects, build and activate relationships, and work with you to develop partnership proposals that are tailored — not templated.</p>
+      <p>I navigate the process on both sides of the table. Having spent years as the corporate decision-maker receiving pitches, I know what makes a company say yes. I know what language works, what concessions matter, and what red flags to avoid. That perspective is the difference between a pitch that gets filed away and one that becomes a deal.</p>
+      <div class="service-includes">
+        <p>This typically includes</p>
+        <ul class="includes-list">
+          <li>Prospect research & outreach</li>
+          <li>Relationship development</li>
+          <li>Partner meetings & presentations</li>
+          <li>Proposal development</li>
+          <li>Negotiation support</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICE 3 -->
+  <div class="service-block reveal">
+    <div class="service-left">
+      <p class="service-tag">03 · Deal Structuring & Stewardship</p>
+      <h3>Seeing It<br><em>Through</em></h3>
+      <p class="tagline">For partnerships that are close to the finish line — or already signed — and need someone to make sure they deliver on what was promised for both sides.</p>
+    </div>
+    <div class="service-right">
+      <p>Getting to yes is only half the work. The partnerships that last — the ones that renew and grow — are the ones where both sides feel the relationship was worth it. That requires intentional stewardship from the moment a deal is signed.</p>
+      <p>I help you architect the partnership framework: the value exchange, the deliverables, the reporting, and the relationship touch points that keep a corporate partner engaged and enthusiastic. And when things get complicated — as they sometimes do — I help you navigate it without losing the relationship.</p>
+      <div class="service-includes">
+        <p>This typically includes</p>
+        <ul class="includes-list">
+          <li>Deal structure & term sheets</li>
+          <li>Partnership agreements</li>
+          <li>Activation planning</li>
+          <li>Partner reporting & stewardship</li>
+          <li>Renewal strategy</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENGAGEMENT MODELS -->
+<section class="engagement reveal">
+  <div class="engagement-header">
+    <p class="section-eyebrow">Engagement models</p>
+    <h2 class="section-title">How we can<br><em>work together.</em></h2>
+    <p>I adapt to what your organization actually needs — not a predetermined model.</p>
+  </div>
+  <div class="engagement-grid">
+    <div class="engagement-card">
+      <p class="engagement-type">Project-Based</p>
+      <h3>A defined scope, a clear outcome.</h3>
+      <p>Ideal for a specific initiative — a new partnership program, a launch, or a critical deal you need to close. We define the project, the deliverables, and the timeline together.</p>
+    </div>
+    <div class="engagement-card">
+      <p class="engagement-type">Ongoing Retainer</p>
+      <h3>Your fractional partnership director.</h3>
+      <p>For organizations that need ongoing partnership strategy, development, and stewardship but aren't ready to hire a full-time VP. I show up as a consistent, embedded part of your team.</p>
+    </div>
+    <div class="engagement-card">
+      <p class="engagement-type">Advisory & Coaching</p>
+      <h3>A thought partner on your most important decisions.</h3>
+      <p>For leaders who have the internal capacity to execute but want a trusted sounding board — someone who's seen it all and will give you an honest read on what you're building.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="process-header reveal">
+    <p class="section-eyebrow">How it starts</p>
+    <h2 class="section-title" style="font-family:'Cormorant Garamond',serif;font-weight:300;line-height:1.2;color:var(--ink);">What to expect<br>when you reach out.</h2>
+  </div>
+  <div class="process-steps">
+    <div class="process-step reveal reveal-delay-1">
+      <div class="step-number">1</div>
+      <h3>You send a note</h3>
+      <p>Tell me a little about your organization and what you're hoping to build. There's no form to fill out — just a conversation starter.</p>
+    </div>
+    <div class="process-step reveal reveal-delay-2">
+      <div class="step-number">2</div>
+      <h3>We have a call</h3>
+      <p>A 30–45 minute conversation where I listen, ask questions, and get a sense of where you are and what you need. No pitch, no pressure.</p>
+    </div>
+    <div class="process-step reveal reveal-delay-3">
+      <div class="step-number">3</div>
+      <h3>I share a proposal</h3>
+      <p>If it feels like a fit, I'll put together a proposal that reflects what I heard — the scope, the approach, and what we'd be working toward together.</p>
+    </div>
+    <div class="process-step reveal reveal-delay-4">
+      <div class="step-number">4</div>
+      <h3>We get to work</h3>
+      <p>Once we agree on the shape of the engagement, we begin. Most clients say the first few weeks feel clarifying in a way they didn't expect.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TAMMY NOTE -->
+<div class="tammy-note reveal">
+  <div class="note-photo">Photo<br>here</div>
+  <div class="note-text">
+    <p>"I always start by listening. The organizations I work with are doing real, meaningful things in the world — and the best thing I can do is understand what they're building before I say a single word about strategy."</p>
+    <cite>— Tammy Abraham Bordeaux</cite>
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="cta" id="connect">
+  <h2 class="reveal">Ready to talk about<br>what you're building?</h2>
+  <p class="reveal">The first conversation is always free, always low-pressure, and always worth having.</p>
+  <a href="connect.html" class="btn-primary reveal">Start the conversation →</a>
+  <p class="cta-sub reveal">Or <a href="about.html">read more about Tammy</a> first — totally fine.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">Dancing Village Partners</span>
+  <span>© 2025 Tammy Abraham Bordeaux · New York</span>
+  <a href="https://linkedin.com/in/tammyabordeaux" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;">LinkedIn ↗</a>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
