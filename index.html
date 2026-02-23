@@ -28,7 +28,6 @@
     overflow-x: hidden;
   }
 
-  /* NAV */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -83,7 +82,6 @@
     padding-bottom: 2px;
   }
 
-  /* HERO */
   .hero {
     min-height: 100vh;
     display: grid;
@@ -209,7 +207,6 @@
     background: linear-gradient(to right, var(--warm-white) 0%, transparent 15%);
   }
 
-  /* Decorative organic blob */
   .hero-blob {
     position: absolute;
     top: 50%;
@@ -227,19 +224,6 @@
     50% { border-radius: 40% 60% 45% 55% / 60% 40% 60% 40%; }
   }
 
-  /* Photo placeholder — in production, swap with <img> */
-  .hero-photo-placeholder {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 85%;
-    height: 90%;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-  }
-
   .photo-note {
     position: absolute;
     bottom: 40px;
@@ -254,7 +238,6 @@
     font-weight: 500;
   }
 
-  /* CREDENTIALS STRIP */
   .credentials {
     background: var(--ink);
     padding: 22px 72px;
@@ -291,7 +274,6 @@
     letter-spacing: 0.02em;
   }
 
-  /* INTRO SECTION */
   .intro {
     padding: 120px 72px;
     display: grid;
@@ -348,7 +330,6 @@
     font-style: normal;
   }
 
-  /* WHEN TO HIRE */
   .when {
     background: var(--cream);
     padding: 100px 72px;
@@ -416,7 +397,6 @@
     font-weight: 300;
   }
 
-  /* HOW SHE WORKS */
   .services {
     padding: 120px 72px;
   }
@@ -462,7 +442,6 @@
     font-weight: 300;
   }
 
-  /* SOCIAL PROOF */
   .proof {
     background: var(--ink);
     padding: 100px 72px;
@@ -475,7 +454,6 @@
   }
 
   .proof-header .section-eyebrow { color: var(--gold); }
-
   .proof-header .section-title { color: white; }
 
   .proof-grid {
@@ -521,7 +499,6 @@
     font-style: normal;
   }
 
-  /* CTA */
   .cta {
     padding: 120px 72px;
     display: grid;
@@ -586,9 +563,7 @@
     font-weight: 300;
   }
 
-  .form-field {
-    margin-bottom: 20px;
-  }
+  .form-field { margin-bottom: 20px; }
 
   .form-field label {
     display: block;
@@ -615,9 +590,7 @@
   }
 
   .form-field input:focus,
-  .form-field textarea:focus {
-    border-color: var(--teal);
-  }
+  .form-field textarea:focus { border-color: var(--teal); }
 
   .form-field textarea { min-height: 100px; resize: vertical; }
 
@@ -639,7 +612,6 @@
 
   .form-submit:hover { background: var(--teal-light); }
 
-  /* FOOTER */
   footer {
     background: var(--ink);
     color: rgba(255,255,255,0.5);
@@ -657,7 +629,6 @@
     font-weight: 400;
   }
 
-  /* FADE IN ANIMATIONS */
   .fade-in {
     opacity: 0;
     transform: translateY(24px);
@@ -673,7 +644,6 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* SCROLL ANIMATIONS */
   .reveal {
     opacity: 0;
     transform: translateY(32px);
@@ -685,7 +655,6 @@
     transform: translateY(0);
   }
 
-  /* TAMMY STRIP */
   .tammy-strip {
     background: linear-gradient(135deg, var(--teal) 0%, #1d6360 100%);
     padding: 72px;
@@ -768,7 +737,6 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="index.html" class="nav-logo">Dancing <span>Village</span> Partners</a>
   <ul class="nav-links">
@@ -779,15 +747,14 @@
   </ul>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-left">
     <div class="hero-eyebrow fade-in">Corporate Partnership Consulting</div>
     <h1 class="hero-headline fade-in">
-      Your mission<br>deserves<br><em>the right partners.</em>
+      I've spent 25 years<br>closing deals.<br><em>Now I close them for you.</em>
     </h1>
     <p class="hero-body fade-in">
-      I'm <strong>Tammy Bordeaux</strong> — and for 25 years, at National Geographic, Tribeca Festival, and across dozens of purpose-driven initiatives, I've done one thing: helped organizations like yours find the partners that fund and amplify their work.
+      I'm <strong>Tammy Bordeaux</strong>. At National Geographic and Tribeca Festival, I built and ran corporate partnerships — finding the right companies, making the case, and bringing in the revenue. If your organization has a mission that deserves serious partners behind it, that's exactly what I do.
     </p>
     <div class="hero-actions fade-in">
       <a href="connect.html" class="btn-primary">Let's Talk</a>
@@ -802,9 +769,8 @@
   </div>
 </section>
 
-<!-- CREDENTIALS STRIP -->
 <div class="credentials">
-  <span class="credentials-label">Career highlights</span>
+  <span class="credentials-label">Where I've done this work</span>
   <div class="credentials-divider"></div>
   <span class="credential-item">National Geographic · VP Corporate Partnerships · 13 years</span>
   <div class="credentials-divider"></div>
@@ -815,52 +781,49 @@
   <span class="credential-item">Co-founder · #1 Farmers Market in New York State</span>
 </div>
 
-<!-- INTRO -->
 <section class="intro">
   <div class="intro-text reveal">
-    <h2>I understand<br><em>both sides</em><br>of the table.</h2>
-    <p>I've spent my career building partnerships at organizations where the mission was everything — where the work had to matter, and the revenue had to follow. That's given me something most partnership consultants don't have: fluency in both the corporate and the nonprofit world.</p>
-    <p>I know what companies need to say yes. I know what mission-driven leaders need to feel confident asking. And I know how to build the bridge between the two.</p>
+    <h2>I know how<br><em>corporate partners</em><br>actually say yes.</h2>
+    <p>For 25 years, I was the person on the other side of the table — building the partnerships program at National Geographic, bringing in sponsors and corporate partners for Tribeca Festival. I know what makes a company invest in a mission-driven organization because I spent decades doing the persuading.</p>
+    <p>Now I bring that experience to organizations that need a partner hunter in their corner — nonprofits, media companies, cultural institutions, and mission-led businesses ready to grow through the right partnerships.</p>
   </div>
   <div class="intro-quote reveal">
-    <blockquote>"She is skilled at working seamlessly across matrixed teams. She identifies synergies and a shared sense of purpose, and executes with utmost professionalism, tenacity, and a solutions-oriented mindset."</blockquote>
-    <cite>Sophie Ross — Communications Consultant & Executive Coach</cite>
+    <blockquote>"She has a special knack for seeing the bigger picture and broader purpose. She finds solutions when others see problems... and always strives to create the most meaningful partnerships — usually far ahead of their time."</blockquote>
+    <cite>Melissa S. — Strategic Partnerships Leader</cite>
   </div>
 </section>
 
-<!-- WHEN TO HIRE -->
 <section class="when" id="how">
   <div class="when-header reveal">
-    <p class="section-eyebrow">Is this the right moment?</p>
-    <h2 class="section-title">You might be ready to work together if...</h2>
+    <p class="section-eyebrow">Who I work with</p>
+    <h2 class="section-title">You're in the right place if...</h2>
   </div>
   <div class="when-grid">
     <div class="when-card reveal">
       <div class="when-number">01</div>
-      <h3>Your strategy is clear — but the revenue path isn't</h3>
-      <p>You have a vision and a plan, but turning it into partnerships that actually close and sustain is where things get stuck. You need someone who knows how to architect the path forward.</p>
+      <h3>You have a mission — and need partners to fund it</h3>
+      <p>You're a nonprofit, media company, cultural institution, or mission-led business with an initiative that deserves real corporate backing. You need someone who knows how to find those partners and close them.</p>
     </div>
     <div class="when-card reveal">
       <div class="when-number">02</div>
-      <h3>You're ready to grow but don't know where to start</h3>
-      <p>Partnership revenue sounds right for your next phase, but you're not sure what to pitch, who to approach, or how to position your organization to attract the right companies.</p>
+      <h3>You know what you're building but not who to call</h3>
+      <p>You have a clear vision and a compelling story. What you're missing is someone who knows which companies to approach, how to frame the ask, and how to navigate the corporate decision-making process.</p>
     </div>
     <div class="when-card reveal">
       <div class="when-number">03</div>
-      <h3>You need a strategic owner, not just a consultant</h3>
-      <p>You don't just want advice. You want someone who will roll up their sleeves, show up as a true collaborator, and see it through — from strategy to signed deal.</p>
+      <h3>You need a dealmaker, not just a strategist</h3>
+      <p>Advice is easy to find. What's rare is someone who will roll up their sleeves, get in the room, build the relationships, and see it through to a signed partnership — because they've done it hundreds of times.</p>
     </div>
   </div>
 </section>
 
-<!-- TAMMY STRIP -->
 <section class="tammy-strip reveal">
   <div class="tammy-photo-circle">Tammy's<br>photo here</div>
   <div class="tammy-text">
-    <h3>Hi, I'm Tammy.<br><em>Let me tell you why I started this.</em></h3>
-    <p>In 2023, after 25 years building partnerships at some of the most mission-driven organizations in the world, I started Dancing Village because I wanted to spend my time doing exactly this — helping purpose-driven leaders find the partners their work deserves. I've been on both sides: building the partnerships and building the nonprofit. I know what it takes, and I love the work.</p>
+    <h3>I didn't study this.<br><em>I spent 25 years doing it.</em></h3>
+    <p>At National Geographic, I built the corporate partnerships program from the ground up and grew it over 13 years. At Tribeca Festival, I brought in the sponsors and partners that made it run. In 2023, I started Dancing Village so I could bring that same work — finding the right corporate partners, making the case, closing the deal — to organizations that need it most.</p>
     <div class="tammy-creds">
-      <span class="tammy-cred">25 Years Experience</span>
+      <span class="tammy-cred">25 Years in Partnership Sales</span>
       <span class="tammy-cred">Nat Geo · Tribeca</span>
       <span class="tammy-cred">Certified Coach</span>
       <span class="tammy-cred">Nonprofit Founder</span>
@@ -869,35 +832,33 @@
   </div>
 </section>
 
-<!-- SERVICES -->
 <section class="services reveal">
   <div class="services-header">
     <p class="section-eyebrow">How I work</p>
-    <h2 class="section-title" style="font-family:'Cormorant Garamond',serif;font-size:clamp(36px,3.5vw,52px);font-weight:300;line-height:1.2;color:var(--ink);">From strategy to signed deal —<br><em>I work at every stage.</em></h2>
+    <h2 class="section-title" style="font-family:'Cormorant Garamond',serif;font-size:clamp(36px,3.5vw,52px);font-weight:300;line-height:1.2;color:var(--ink);">From identifying the right partners<br><em>to getting them to yes.</em></h2>
   </div>
   <div class="services-grid">
     <div class="service-item reveal">
       <p class="service-tag">Partnership Strategy & Advisory</p>
-      <h3>Positioning You for Growth</h3>
-      <p>I help you clarify your value proposition, identify which types of partners would invest and why, and design a go-to-market approach that's grounded in how corporate decisions actually get made.</p>
+      <h3>Building the Case for Investment</h3>
+      <p>I help you clarify your value proposition and position your organization so the right corporate partners can immediately see why they should invest. This is the groundwork that makes everything else possible.</p>
     </div>
     <div class="service-item reveal">
-      <p class="service-tag">Partner & Revenue Development</p>
-      <h3>Co-Creating Opportunities</h3>
-      <p>Whether you need me to find the right partners or develop relationships you already have, I co-create opportunities around shared value — not a one-size-fits-all pitch. Every partnership is built to work for both sides.</p>
+      <p class="service-tag">Partner Identification & Development</p>
+      <h3>Finding the Right Companies</h3>
+      <p>I identify which companies to pursue and why, build the relationships, and develop partnership opportunities that are genuinely compelling — not templated pitches, but deals built around shared value.</p>
     </div>
     <div class="service-item reveal">
-      <p class="service-tag">Deal Structuring & Stewardship</p>
-      <h3>Seeing It Through</h3>
-      <p>I architect the partnership framework — the value exchange, deal terms, and commitments — and guide you through the negotiation. Then I help ensure both sides deliver on what was promised.</p>
+      <p class="service-tag">Deal Structuring & Close</p>
+      <h3>Getting It Across the Line</h3>
+      <p>I structure the deal, navigate the negotiation, and see it through to a signed agreement. Then I help ensure both sides deliver — because a great partnership doesn't end at the contract.</p>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
 <section class="proof reveal">
   <div class="proof-header">
-    <p class="section-eyebrow">What clients say</p>
+    <p class="section-eyebrow">What colleagues say</p>
     <h2 class="section-title">Words I'm proud of.</h2>
   </div>
   <div class="proof-grid">
@@ -916,12 +877,11 @@
   </div>
 </section>
 
-<!-- CTA -->
 <section class="cta" id="connect">
   <div class="cta-text reveal">
-    <h2>Ready to find your<br><em>next great partner?</em></h2>
-    <p>The best partnerships start with a conversation. Tell me a little about what you're working on and what you're hoping to build — I'll be in touch within a day or two.</p>
-    <p style="font-size:14px;color:#9a9a94;">Not sure if we're the right fit? That's exactly what a first conversation is for.</p>
+    <h2>Have a mission that needs<br><em>the right partners behind it?</em></h2>
+    <p>Tell me what you're building and what you're hoping to achieve. If it sounds like a fit, I'll share how I'd approach it — and we'll take it from there.</p>
+    <p style="font-size:14px;color:#9a9a94;">I work with nonprofits, media companies, cultural institutions, and mission-led businesses. If you're not sure whether that's you, just reach out.</p>
   </div>
   <div class="cta-form reveal">
     <h3>Let's talk.</h3>
@@ -942,7 +902,6 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <span class="footer-logo">Dancing Village Partners</span>
   <span>© 2025 Tammy Abraham Bordeaux · New York</span>
@@ -950,13 +909,10 @@
 </footer>
 
 <script>
-  // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
+      if (entry.isIntersecting) entry.target.classList.add('visible');
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
   reveals.forEach(el => observer.observe(el));
