@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Let's Talk — Dancing Village Partners</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a18;
+    --cream: #f5f2ec;
+    --teal: #2a7d7b;
+    --teal-light: #3d9e9b;
+    --gold: #c8a84b;
+    --warm-white: #faf8f4;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 24px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(250, 248, 244, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(42, 125, 123, 0.12);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--teal); }
+
+  .nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity 0.2s, color 0.2s;
+  }
+
+  .nav-links a:hover { opacity: 1; color: var(--teal); }
+  .nav-links a.active { opacity: 1; color: var(--teal); }
+
+  .nav-cta {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--teal) !important;
+    opacity: 1 !important;
+    border-bottom: 1px solid var(--teal);
+    padding-bottom: 2px;
+  }
+
+  /* MAIN LAYOUT */
+  .connect-wrap {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* LEFT PANEL */
+  .left-panel {
+    background: var(--ink);
+    padding: 160px 72px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+  }
+
+  .left-panel::before {
+    content: '';
+    position: absolute;
+    top: -150px; right: -150px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(42,125,123,0.2) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .left-panel::after {
+    content: '';
+    position: absolute;
+    bottom: 50px; left: -100px;
+    width: 350px; height: 350px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,168,75,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .left-top {
+    position: relative;
+    z-index: 2;
+  }
+
+  .left-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--teal-light);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .left-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px; height: 1px;
+    background: var(--teal-light);
+  }
+
+  .left-panel h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 5vw, 76px);
+    font-weight: 300;
+    line-height: 1.05;
+    color: white;
+    margin-bottom: 32px;
+  }
+
+  .left-panel h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .left-panel .lead {
+    font-size: 16px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.65);
+    font-weight: 300;
+    max-width: 420px;
+    margin-bottom: 56px;
+  }
+
+  /* TAMMY MINI BIO */
+  .tammy-mini {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    padding: 28px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 40px;
+  }
+
+  .tammy-mini-photo {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #c8ddd8, #2a7d7b);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: rgba(255,255,255,0.6);
+    flex-shrink: 0;
+    text-align: center;
+    font-weight: 300;
+  }
+
+  .tammy-mini-text h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: white;
+    margin-bottom: 4px;
+  }
+
+  .tammy-mini-text p {
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  /* WHAT TO EXPECT */
+  .what-to-expect {
+    position: relative;
+    z-index: 2;
+  }
+
+  .expect-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 20px;
+  }
+
+  .expect-items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .expect-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .expect-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--teal-light);
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+
+  .expect-item p {
+    font-size: 14px;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.55);
+    font-weight: 300;
+  }
+
+  .expect-item p strong {
+    color: rgba(255,255,255,0.85);
+    font-weight: 400;
+  }
+
+  /* RIGHT PANEL */
+  .right-panel {
+    background: var(--warm-white);
+    padding: 160px 72px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .form-header {
+    margin-bottom: 48px;
+  }
+
+  .form-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 3vw, 46px);
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+
+  .form-header h2 em {
+    font-style: italic;
+    color: var(--teal);
+  }
+
+  .form-header p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #6a6a64;
+    font-weight: 300;
+  }
+
+  /* FORM */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .field label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+
+  .field input,
+  .field textarea,
+  .field select {
+    background: white;
+    border: 1px solid rgba(26,26,24,0.14);
+    padding: 14px 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    -webkit-appearance: none;
+    border-radius: 0;
+  }
+
+  .field input:focus,
+  .field textarea:focus,
+  .field select:focus {
+    border-color: var(--teal);
+    box-shadow: 0 0 0 3px rgba(42,125,123,0.08);
+  }
+
+  .field input::placeholder,
+  .field textarea::placeholder {
+    color: rgba(26,26,24,0.3);
+    font-weight: 300;
+  }
+
+  .field textarea {
+    min-height: 120px;
+    resize: vertical;
+    line-height: 1.6;
+  }
+
+  .field select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%232a7d7b' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+    cursor: pointer;
+    color: rgba(26,26,24,0.5);
+  }
+
+  .field select.has-value { color: var(--ink); }
+
+  /* CHARACTER COUNTER */
+  .field-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .field-meta label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+
+  .char-hint {
+    font-size: 11px;
+    color: rgba(26,26,24,0.35);
+    font-weight: 300;
+  }
+
+  /* SUBMIT */
+  .form-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .btn-submit {
+    background: var(--teal);
+    color: white;
+    border: none;
+    padding: 18px 36px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.25s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .btn-submit:hover {
+    background: var(--teal-light);
+    transform: translateY(-1px);
+  }
+
+  .btn-submit .arrow {
+    transition: transform 0.2s;
+  }
+
+  .btn-submit:hover .arrow { transform: translateX(4px); }
+
+  .form-note {
+    font-size: 13px;
+    color: #9a9a94;
+    font-weight: 300;
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  /* DIVIDER */
+  .form-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 8px 0;
+  }
+
+  .form-divider::before,
+  .form-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(26,26,24,0.1);
+  }
+
+  .form-divider span {
+    font-size: 11px;
+    color: rgba(26,26,24,0.35);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* LINKEDIN OPTION */
+  .linkedin-option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 14px 24px;
+    border: 1px solid rgba(26,26,24,0.14);
+    background: white;
+    text-decoration: none;
+    color: var(--ink);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .linkedin-option:hover {
+    border-color: #0077b5;
+    background: rgba(0,119,181,0.04);
+  }
+
+  .linkedin-icon {
+    width: 18px; height: 18px;
+    background: #0077b5;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* BELOW FOLD */
+  .reassurance {
+    background: var(--cream);
+    padding: 80px 72px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+  }
+
+  .reassurance-item {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .reassurance-item .icon {
+    font-size: 28px;
+    margin-bottom: 4px;
+  }
+
+  .reassurance-item h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+
+  .reassurance-item p {
+    font-size: 14px;
+    line-height: 1.75;
+    color: #5a5a54;
+    font-weight: 300;
+  }
+
+  /* FAQ */
+  .faq {
+    padding: 80px 72px;
+    max-width: 840px;
+    margin: 0 auto;
+  }
+
+  .faq-header {
+    margin-bottom: 48px;
+    text-align: center;
+  }
+
+  .section-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 16px;
+  }
+
+  .faq-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 3vw, 42px);
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+
+  .faq-item {
+    border-top: 1px solid rgba(26,26,24,0.1);
+    padding: 28px 0;
+  }
+
+  .faq-item:last-child { border-bottom: 1px solid rgba(26,26,24,0.1); }
+
+  .faq-q {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 12px;
+    line-height: 1.3;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .faq-toggle {
+    font-size: 20px;
+    color: var(--teal);
+    flex-shrink: 0;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    transition: transform 0.3s;
+    line-height: 1;
+  }
+
+  .faq-item.open .faq-toggle { transform: rotate(45deg); }
+
+  .faq-a {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #4a4a44;
+    font-weight: 300;
+    display: none;
+    padding-right: 40px;
+  }
+
+  .faq-item.open .faq-a { display: block; }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.5);
+    padding: 40px 72px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: rgba(255,255,255,0.8);
+    font-weight: 400;
+  }
+
+  /* REVEAL */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  /* SUCCESS STATE */
+  .success-state {
+    display: none;
+    text-align: center;
+    padding: 48px;
+    background: rgba(42,125,123,0.05);
+    border: 1px solid rgba(42,125,123,0.2);
+  }
+
+  .success-state.visible { display: block; }
+
+  .success-state .check {
+    font-size: 40px;
+    margin-bottom: 20px;
+  }
+
+  .success-state h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+
+  .success-state p {
+    font-size: 15px;
+    color: #5a5a54;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Dancing <span>Village</span> Partners</a>
+  <ul class="nav-links">
+    <li><a href="howwework.html">How I Work</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="connect.html" class="active">Work Together</a></li>
+    <li><a href="connect.html" class="nav-cta">Let's Talk</a></li>
+  </ul>
+</nav>
+
+<!-- MAIN CONNECT SECTION -->
+<div class="connect-wrap">
+
+  <!-- LEFT: WARMTH & CONTEXT -->
+  <div class="left-panel">
+    <div class="left-top">
+      <p class="left-eyebrow">Let's talk</p>
+      <h1>The best<br>partnerships<br>start with a<br><em>conversation.</em></h1>
+      <p class="lead">No pitch. No pressure. Just a chance to hear what you're working on — and explore whether I'm the right person to help you build it.</p>
+
+      <div class="tammy-mini">
+        <div class="tammy-mini-photo">Photo<br>here</div>
+        <div class="tammy-mini-text">
+          <h4>Tammy Abraham Bordeaux</h4>
+          <p>Founder, Dancing Village Partners<br>25 years · National Geographic · Tribeca</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="what-to-expect">
+      <p class="expect-label">What happens next</p>
+      <div class="expect-items">
+        <div class="expect-item">
+          <div class="expect-dot"></div>
+          <p><strong>I read every message myself.</strong> You're not going into a queue. You're reaching out to me directly.</p>
+        </div>
+        <div class="expect-item">
+          <div class="expect-dot"></div>
+          <p><strong>I'll respond within 1–2 days</strong> to set up a 30–45 minute call — no agenda, just a conversation.</p>
+        </div>
+        <div class="expect-item">
+          <div class="expect-dot"></div>
+          <p><strong>If we're a fit,</strong> I'll share a simple proposal based on what I hear. If we're not, I'll say so honestly — and often suggest who might be.</p>
+        </div>
+        <div class="expect-item">
+          <div class="expect-dot"></div>
+          <p><strong>The first call is always free.</strong> No commitment, no invoice, no surprises.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: FORM -->
+  <div class="right-panel">
+    <div class="form-header">
+      <h2>Tell me what<br>you're <em>working on.</em></h2>
+      <p>The more context you share, the better our first conversation will be.</p>
+    </div>
+
+    <div id="successState" class="success-state">
+      <div class="check">✉️</div>
+      <h3>Message sent!</h3>
+      <p>Thank you for reaching out. Tammy will be in touch within 1–2 days to set up a call.</p>
+    </div>
+
+    <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="field">
+          <label for="fname">First name</label>
+          <input type="text" id="fname" placeholder="Tammy" required>
+        </div>
+        <div class="field">
+          <label for="lname">Last name</label>
+          <input type="text" id="lname" placeholder="Bordeaux" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="email">Email address</label>
+        <input type="email" id="email" placeholder="you@yourorganization.org" required>
+      </div>
+
+      <div class="field">
+        <label for="org">Organization name</label>
+        <input type="text" id="org" placeholder="Your organization or company">
+      </div>
+
+      <div class="field">
+        <label for="stage">Where are you in your partnership journey?</label>
+        <select id="stage" onchange="this.classList.add('has-value')">
+          <option value="" disabled selected>Choose the best description...</option>
+          <option>Just starting — we haven't pursued corporate partnerships yet</option>
+          <option>Early stage — we have a strategy but haven't closed deals yet</option>
+          <option>Active — we have some partnerships but want to grow</option>
+          <option>Scaling — we need to build out a full partnership program</option>
+          <option>Not sure yet — I'd like to talk it through</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <div class="field-meta">
+          <label for="message">Tell me about your work and what you're hoping to build</label>
+          <span class="char-hint">A few sentences is plenty</span>
+        </div>
+        <textarea id="message" placeholder="What's the initiative or organization? What kind of partnership support are you looking for? What does success look like for you?" required></textarea>
+      </div>
+
+      <div class="field">
+        <label for="referral">How did you hear about Dancing Village? <span style="font-weight:300;text-transform:none;letter-spacing:0;font-size:11px;color:#9a9a94;">(optional)</span></label>
+        <input type="text" id="referral" placeholder="Referral, LinkedIn, web search...">
+      </div>
+
+      <div class="form-footer">
+        <button type="submit" class="btn-submit">
+          Send a note
+          <span class="arrow">→</span>
+        </button>
+        <p class="form-note">I personally read and respond to every message — usually within 1–2 business days.</p>
+      </div>
+
+      <div class="form-divider">
+        <span>or connect on</span>
+      </div>
+
+      <a href="https://linkedin.com/in/tammyabordeaux" target="_blank" class="linkedin-option">
+        <div class="linkedin-icon">in</div>
+        Find Tammy on LinkedIn
+      </a>
+    </form>
+  </div>
+</div>
+
+<!-- REASSURANCE STRIP -->
+<section class="reassurance">
+  <div class="reassurance-item reveal">
+    <div class="icon">🌍</div>
+    <h3>Global clients, personal attention</h3>
+    <p>Tammy works with organizations around the world — but every engagement is handled personally, not through a team.</p>
+  </div>
+  <div class="reassurance-item reveal reveal-delay-1">
+    <div class="icon">🎯</div>
+    <h3>If we're not a fit, she'll tell you</h3>
+    <p>Not every engagement is the right one. Tammy is honest about fit — and will often point you toward someone better suited if she's not the right match.</p>
+  </div>
+  <div class="reassurance-item reveal reveal-delay-2">
+    <div class="icon">🔒</div>
+    <h3>Confidential by default</h3>
+    <p>Everything you share — your strategy, your challenges, your goals — stays between us. Discretion is foundational to how Tammy works.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="faq-header reveal">
+    <p class="section-eyebrow">Common questions</p>
+    <h2>Things people often<br>wonder before reaching out.</h2>
+  </div>
+
+  <div class="faq-item reveal">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      Do I need to have a fully formed partnership strategy before I reach out?
+      <span class="faq-toggle">+</span>
+    </div>
+    <p class="faq-a">Not at all. Some of the most valuable work Tammy does is helping organizations figure out their strategy in the first place. If you know you need corporate partnerships but aren't sure where to start, that's exactly the right moment to have a conversation.</p>
+  </div>
+
+  <div class="faq-item reveal">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      What size organizations do you typically work with?
+      <span class="faq-toggle">+</span>
+    </div>
+    <p class="faq-a">Dancing Village works with a range of organizations — from founder-led startups and small nonprofits to established cultural institutions and global impact organizations. What matters more than size is whether the mission is real and the leadership is ready to commit to the work.</p>
+  </div>
+
+  <div class="faq-item reveal">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      How long does an engagement typically last?
+      <span class="faq-toggle">+</span>
+    </div>
+    <p class="faq-a">It depends on the scope. A project-based engagement might run 3–6 months. A retainer arrangement is often ongoing. Advisory relationships can be quarterly check-ins. Tammy structures every engagement around what your organization actually needs — not a predetermined timeline.</p>
+  </div>
+
+  <div class="faq-item reveal">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      Do you work internationally?
+      <span class="faq-toggle">+</span>
+    </div>
+    <p class="faq-a">Yes. Tammy works with organizations around the world. While her network is deepest in the US market, she has experience building international partnerships and working across different sectors and geographies.</p>
+  </div>
+
+  <div class="faq-item reveal">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      What does it cost to work with you?
+      <span class="faq-toggle">+</span>
+    </div>
+    <p class="faq-a">Pricing is tailored to the scope and structure of each engagement. Tammy doesn't publish rates because the right structure varies too much to be meaningful out of context. The first conversation is always free — and if there's a fit, she'll share a clear, transparent proposal.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">Dancing Village Partners</span>
+  <span>© 2025 Tammy Abraham Bordeaux · New York</span>
+  <a href="https://linkedin.com/in/tammyabordeaux" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;">LinkedIn ↗</a>
+</footer>
+
+<script>
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // FAQ toggle
+  function toggleFaq(el) {
+    const item = el.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // Form submit (demo)
+  function handleSubmit(e) {
+    e.preventDefault();
+    document.getElementById('contactForm').style.display = 'none';
+    document.getElementById('successState').classList.add('visible');
+    window.scrollTo({ top: document.querySelector('.right-panel').offsetTop, behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
